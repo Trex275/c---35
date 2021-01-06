@@ -4,6 +4,7 @@ class Form {
         this.title.html("Car Racing Game")
         this.name = createInput('Enter Your Name Here')
         this.button = createButton('Play')
+        this.message = createElement('h1')
 
     }
     display(){
@@ -11,7 +12,12 @@ class Form {
         this.name.position(550, 250);
         this.button.position(615, 210);
         this.button.mousePressed(()=>{
-            console.log("Working")
+            var name = this.name.value();
+            console.log(name);
+            this.button.hide();
+            this.name.hide();
+            this.message.html('Hello ' + name + " ! Welcome to the Game")
+            this.message.position(280, 250)
         });
     }
 }
