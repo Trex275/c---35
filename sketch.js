@@ -1,19 +1,29 @@
 var database;
 var form;
 var playercount;
+var gamestate = 0;
+var player;
+var game;
+var allplayers;
 
-function setup(){
-    createCanvas(500,500);
+function setup() {
+    createCanvas(500, 500);
 
     database = firebase.database();
     console.log(database);
 
-    form = new Form();
-    
+    game = new Game();
+    game.getgamestate();
+    game.start();
+
 }
 
-function draw(){
+function draw() {
     background("white");
-    form.display();
-    drawSprites();
+    if(playercount===4){
+      game.updategamestate(1);
+    }
+    if(gamestate===1){
+     game.play();
+    }
 }
